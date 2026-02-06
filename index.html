@@ -1064,8 +1064,8 @@
                     <div class="candidate-location">📍 Available for: Germany, Netherlands</div>
                     <span class="candidate-badge">✓ Verified</span>
                 </div>
-                <div class="candidate-card">
-                    <img src="candidate2.png" alt="Candidate" class="candidate-photo">
+                <div class="candidate-card" id="mehmet-card">
+                    <img src="thumb.jpg" alt="Candidate" class="candidate-photo" id="mehmet-photo">
                     <div class="candidate-name">Mehmet Kaya</div>
                     <div class="candidate-role">Full Stack Developer</div>
                     <div class="candidate-location">📍 Available for: UK, Denmark</div>
@@ -1365,102 +1365,117 @@
                 if (Math.random() > 0.8) screenShake();
             }, 5000);
 
-            // === STAGE 1: START GLITCHING AT 3 SECONDS ===
-            setTimeout(() => {
+            // === THUMB REVEAL TRANSITION ===
+            let prankTriggered = false;
+            let visibilityTimer = null;
+
+            function triggerPrank() {
+                if (prankTriggered) return;
+                prankTriggered = true;
+
+                const thumb = document.getElementById('mehmet-photo');
                 const introScreen = document.getElementById('intro-screen');
-                const glitchOverlay = document.getElementById('glitch-overlay');
-
-                // Start glitch effects
-                if (introScreen) {
-                    introScreen.classList.add('revealing');
-                }
-                if (glitchOverlay) {
-                    glitchOverlay.classList.add('active');
-                }
-            }, 3000);
-
-            // === STAGE 2: CARVE THE HOLE AT 4 SECONDS ===
-            setTimeout(() => {
-                const introScreen = document.getElementById('intro-screen');
-                const glitchOverlay = document.getElementById('glitch-overlay');
-
-                // Show prank content first (it will be visible through the hole)
                 const prankContent = document.getElementById('prank-content');
-                if (prankContent) {
-                    prankContent.classList.add('visible');
-                }
 
-                // Start the chaos immediately!
-                createConfetti();
-                createEmojiRain();
+                if (!thumb) return;
 
-                // Carve the hole - the intro collapses into a point
-                if (introScreen) {
-                    introScreen.classList.add('hidden');
-                }
+                // Get thumb position
+                const rect = thumb.getBoundingClientRect();
 
-                // Remove glitch overlay after transition
+                // Clone thumb for animation
+                const clone = thumb.cloneNode(true);
+                clone.id = 'animated-thumb';
+                clone.style.cssText = `
+                    position: fixed;
+                    left: ${rect.left}px;
+                    top: ${rect.top}px;
+                    width: ${rect.width}px;
+                    height: ${rect.height}px;
+                    z-index: 10001;
+                    border-radius: 50%;
+                    transition: all 1s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+                    pointer-events: none;
+                `;
+                document.body.appendChild(clone);
+
+                // Hide original
+                thumb.style.visibility = 'hidden';
+
+                // Animate thumb to center-top (prank page position)
+                requestAnimationFrame(() => {
+                    clone.style.left = '50%';
+                    clone.style.top = '180px';
+                    clone.style.width = '350px';
+                    clone.style.height = '350px';
+                    clone.style.transform = 'translateX(-50%)';
+                    clone.style.boxShadow = '0 15px 35px rgba(0,0,0,0.3), 0 0 60px rgba(255,255,255,0.5)';
+                    clone.style.border = '6px solid white';
+                });
+
+                // Fade out intro screen
                 setTimeout(() => {
-                    if (glitchOverlay) {
-                        glitchOverlay.classList.remove('active');
+                    if (introScreen) {
+                        introScreen.style.transition = 'opacity 0.8s ease';
+                        introScreen.style.opacity = '0';
+                        introScreen.style.pointerEvents = 'none';
                     }
-                }, 1500);
-
-                // Change page title and favicon
-                document.title = "🎉 SURPRISE! YOU GOT PRANKED! 🎉";
-                document.getElementById('favicon').href = "data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🤡</text></svg>";
-
-                // Start rest of chaos
-                setInterval(launchRocket, 1000);
-                setInterval(fireLaser, 800);
-                setInterval(spawnFloatingText, 2000);
-                setInterval(spawnFlyingHead, 5000);
-
-                console.log("%c🎉 DOĞUŞ GOT MEGA-PRANKED! 🎉", "font-size: 30px; color: red; text-shadow: 2px 2px blue;");
-                console.log("%cThere is no escape from the chaos!", "font-size: 20px; color: purple;");
-
-                // Make it hard to leave! 😈
-
-                // 1. Beforeunload dialog (works when user interacts with page first)
-                window.addEventListener('beforeunload', function (e) {
-                    e.preventDefault();
-                    e.returnValue = '';
-                    return '';
-                });
-
-                // 2. When they try to switch tabs or minimize, show alert
-                document.addEventListener('visibilitychange', function () {
-                    if (document.hidden) {
-                        // They'll see this when they come back
-                        setTimeout(() => {
-                            alert("🤡 You thought you could escape? NOPE! 🤡");
-                        }, 100);
+                    if (prankContent) {
+                        prankContent.classList.add('visible');
                     }
-                });
+                }, 400);
 
-                // 3. Prevent back button
-                history.pushState(null, null, location.href);
-                window.addEventListener('popstate', function () {
+                // Remove clone and start chaos after animation
+                setTimeout(() => {
+                    clone.remove();
+                    createConfetti();
+                    createEmojiRain();
+                    setInterval(launchRocket, 1000);
+                    setInterval(fireLaser, 800);
+                    setInterval(spawnFloatingText, 2000);
+                    setInterval(spawnFlyingHead, 5000);
+
+                    document.title = "🎉 SURPRISE! YOU GOT PRANKED! 🎉";
+                    document.getElementById('favicon').href = "data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🤡</text></svg>";
+
+                    // Escape prevention
+                    window.addEventListener('beforeunload', (e) => { e.preventDefault(); e.returnValue = ''; });
+                    document.addEventListener('visibilitychange', () => { if (document.hidden) setTimeout(() => alert("🤡 You thought you could escape? NOPE! 🤡"), 100); });
                     history.pushState(null, null, location.href);
-                    alert("⛔ There is no going back, Doğuş! ⛔");
-                });
+                    window.addEventListener('popstate', () => { history.pushState(null, null, location.href); alert("⛔ There is no going back, Doğuş! ⛔"); });
+                    setInterval(() => { if (Math.random() > 0.7) alert(["Still here? 😈", "You can't escape! 🔒"][Math.floor(Math.random() * 2)]); }, 30000);
+                }, 1200);
 
-                // 4. Random popup trolling every 30 seconds
-                setInterval(() => {
-                    const trollMessages = [
-                        "Still here? �",
-                        "You can't escape! 🔒",
-                        "Doğuş... accept your fate �",
-                        "This is your life now 🎉",
-                        "Jonas says hi! �"
-                    ];
-                    // Only show occasionally and randomly
-                    if (Math.random() > 0.7) {
-                        alert(trollMessages[Math.floor(Math.random() * trollMessages.length)]);
-                    }
-                }, 30000);
+                console.log("%c🎉 DOĞUŞ GOT MEGA-PRANKED! 🎉", "font-size: 30px; color: red;");
+            }
 
-            }, 4000);
+            // Watch for Mehmet's thumb to come into view
+            const mehmetPhoto = document.getElementById('mehmet-photo');
+            if (mehmetPhoto) {
+                const observer = new IntersectionObserver((entries) => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting && entry.intersectionRatio >= 0.8) {
+                            visibilityTimer = setTimeout(() => {
+                                observer.disconnect();
+                                triggerPrank();
+                            }, 300);
+                        } else {
+                            clearTimeout(visibilityTimer);
+                        }
+                    });
+                }, { threshold: 0.8 });
+                observer.observe(mehmetPhoto);
+            }
+
+            // Fallback: Auto-trigger after 8 seconds
+            setTimeout(() => {
+                if (!prankTriggered) {
+                    const mehmetCard = document.getElementById('mehmet-card');
+                    if (mehmetCard) mehmetCard.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                    setTimeout(triggerPrank, 800);
+                }
+            }, 8000);
+
+
         </script>
     </div> <!-- Close prank-content -->
 </body>
