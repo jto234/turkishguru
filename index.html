@@ -1,0 +1,1468 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TurkishGuru | International Employment Services</title>
+    <link rel="icon" id="favicon"
+        href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🇹🇷</text></svg>">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;800&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Outfit', sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
+            overflow: hidden;
+            position: relative;
+        }
+
+        body.disco-mode {
+            animation: disco-bg 0.3s linear infinite;
+        }
+
+        @keyframes disco-bg {
+            0% {
+                background: linear-gradient(135deg, #ff0000 0%, #ff00ff 50%, #00ffff 100%);
+            }
+
+            25% {
+                background: linear-gradient(135deg, #00ff00 0%, #ffff00 50%, #ff00ff 100%);
+            }
+
+            50% {
+                background: linear-gradient(135deg, #0000ff 0%, #00ffff 50%, #ff0000 100%);
+            }
+
+            75% {
+                background: linear-gradient(135deg, #ff00ff 0%, #00ff00 50%, #ffff00 100%);
+            }
+
+            100% {
+                background: linear-gradient(135deg, #ff0000 0%, #ff00ff 50%, #00ffff 100%);
+            }
+        }
+
+        body.shake {
+            animation: shake 0.5s cubic-bezier(.36, .07, .19, .97) both;
+        }
+
+        @keyframes shake {
+
+            10%,
+            90% {
+                transform: translate3d(-2px, 0, 0) rotate(-1deg);
+            }
+
+            20%,
+            80% {
+                transform: translate3d(4px, 0, 0) rotate(1deg);
+            }
+
+            30%,
+            50%,
+            70% {
+                transform: translate3d(-6px, 0, 0) rotate(-2deg);
+            }
+
+            40%,
+            60% {
+                transform: translate3d(6px, 0, 0) rotate(2deg);
+            }
+        }
+
+        /* Confetti animation */
+        .confetti {
+            position: fixed;
+            width: 10px;
+            height: 10px;
+            top: -10px;
+            animation: confetti-fall 3s linear infinite;
+        }
+
+        @keyframes confetti-fall {
+            to {
+                transform: translateY(100vh) rotate(720deg);
+            }
+        }
+
+        .container {
+            text-align: center;
+            padding: 40px;
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(20px);
+            border-radius: 30px;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.2);
+            animation: pop-in 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55), float 3s ease-in-out infinite;
+            max-width: 90%;
+            z-index: 10;
+        }
+
+        @keyframes pop-in {
+            0% {
+                transform: scale(0) rotate(-10deg);
+                opacity: 0;
+            }
+
+            100% {
+                transform: scale(1) rotate(0deg);
+                opacity: 1;
+            }
+        }
+
+        @keyframes float {
+
+            0%,
+            100% {
+                transform: translateY(0) rotate(0deg);
+            }
+
+            50% {
+                transform: translateY(-20px) rotate(2deg);
+            }
+        }
+
+        .prank-image {
+            width: 350px;
+            height: 350px;
+            object-fit: cover;
+            border-radius: 50%;
+            border: 6px solid white;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3), 0 0 60px rgba(255, 255, 255, 0.5);
+            margin-bottom: 30px;
+            animation: initial-zoom-out 1s ease-out forwards, mega-zoom 0.8s ease-in-out 1s infinite, glow 1s ease-in-out infinite alternate;
+            cursor: pointer;
+        }
+
+        @keyframes initial-zoom-out {
+            0% {
+                transform: scale(3) rotate(0deg);
+            }
+
+            100% {
+                transform: scale(1) rotate(90deg);
+            }
+        }
+
+        @keyframes mega-zoom {
+
+            0%,
+            100% {
+                transform: scale(1) rotate(87deg);
+            }
+
+            50% {
+                transform: scale(1.4) rotate(93deg);
+            }
+        }
+
+        @keyframes glow {
+            from {
+                box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3), 0 0 60px rgba(255, 255, 255, 0.5);
+            }
+
+            to {
+                box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3), 0 0 100px rgba(255, 0, 255, 0.8);
+            }
+        }
+
+        .prank-image:hover {
+            animation: spin-crazy 0.3s ease infinite;
+        }
+
+        @keyframes spin-crazy {
+            0% {
+                transform: rotate(0deg) scale(1.2);
+            }
+
+            25% {
+                transform: rotate(90deg) scale(1.3);
+            }
+
+            50% {
+                transform: rotate(180deg) scale(1.2);
+            }
+
+            75% {
+                transform: rotate(270deg) scale(1.3);
+            }
+
+            100% {
+                transform: rotate(360deg) scale(1.2);
+            }
+        }
+
+        .title {
+            font-size: clamp(1.8rem, 5vw, 3rem);
+            font-weight: 800;
+            color: white;
+            text-shadow: 3px 3px 0 rgba(0, 0, 0, 0.2), 0 0 30px rgba(255, 255, 255, 0.8);
+            margin-bottom: 15px;
+            animation: rainbow-text 1s linear infinite, crazy-pulse 0.3s ease-in-out infinite;
+        }
+
+        @keyframes rainbow-text {
+            0% {
+                filter: hue-rotate(0deg);
+            }
+
+            100% {
+                filter: hue-rotate(360deg);
+            }
+        }
+
+        @keyframes crazy-pulse {
+
+            0%,
+            100% {
+                transform: scale(1);
+            }
+
+            50% {
+                transform: scale(1.1);
+            }
+        }
+
+        .subtitle {
+            font-size: clamp(1rem, 3vw, 1.5rem);
+            color: rgba(255, 255, 255, 0.9);
+            font-weight: 600;
+            animation: typing 2s steps(40) infinite, blink 0.5s step-end infinite alternate;
+        }
+
+        @keyframes typing {
+
+            0%,
+            100% {
+                width: 100%;
+            }
+
+            50% {
+                width: 80%;
+            }
+        }
+
+        .emoji-rain {
+            position: fixed;
+            font-size: 2rem;
+            top: -50px;
+            animation: emoji-fall 4s linear infinite;
+            pointer-events: none;
+        }
+
+        @keyframes emoji-fall {
+            to {
+                transform: translateY(110vh) rotate(720deg);
+            }
+        }
+
+        /* Flying rocket */
+        .rocket {
+            position: fixed;
+            font-size: 3rem;
+            animation: rocket-fly 2s linear infinite;
+            pointer-events: none;
+        }
+
+        @keyframes rocket-fly {
+            0% {
+                left: -50px;
+                bottom: -50px;
+                transform: rotate(-45deg);
+            }
+
+            100% {
+                left: 110vw;
+                bottom: 110vh;
+                transform: rotate(-45deg);
+            }
+        }
+
+        /* Laser beams */
+        .laser {
+            position: fixed;
+            height: 3px;
+            background: linear-gradient(90deg, transparent, #ff0000, #ff0000, transparent);
+            animation: laser-shoot 0.5s linear infinite;
+            pointer-events: none;
+        }
+
+        @keyframes laser-shoot {
+            0% {
+                left: -100%;
+                width: 200px;
+            }
+
+            100% {
+                left: 100%;
+                width: 200px;
+            }
+        }
+
+        /* Floating text */
+        .floating-text {
+            position: fixed;
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: white;
+            text-shadow: 2px 2px 0 #000;
+            animation: float-up 3s ease-out forwards;
+            pointer-events: none;
+        }
+
+        @keyframes float-up {
+            0% {
+                opacity: 1;
+                transform: translateY(0) scale(1);
+            }
+
+            100% {
+                opacity: 0;
+                transform: translateY(-200px) scale(2);
+            }
+        }
+
+        .footer {
+            margin-top: 30px;
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 0.9rem;
+            animation: blink-fast 0.2s infinite;
+        }
+
+        @keyframes blink-fast {
+
+            0%,
+            50% {
+                opacity: 1;
+            }
+
+            51%,
+            100% {
+                opacity: 0.5;
+            }
+        }
+
+        .gotcha-btn {
+            margin-top: 25px;
+            padding: 15px 40px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            font-family: 'Outfit', sans-serif;
+            background: linear-gradient(135deg, #ff6b6b, #feca57, #48dbfb, #ff9ff3);
+            background-size: 400% 400%;
+            animation: gradient-move 1s ease infinite, button-wiggle 0.1s infinite;
+            color: white;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 30px rgba(255, 107, 107, 0.4), 0 0 50px rgba(255, 255, 255, 0.3);
+        }
+
+        @keyframes gradient-move {
+            0% {
+                background-position: 0% 50%;
+            }
+
+            50% {
+                background-position: 100% 50%;
+            }
+
+            100% {
+                background-position: 0% 50%;
+            }
+        }
+
+        @keyframes button-wiggle {
+
+            0%,
+            100% {
+                transform: rotate(-2deg);
+            }
+
+            50% {
+                transform: rotate(2deg);
+            }
+        }
+
+        .gotcha-btn:hover {
+            transform: translateY(-10px) scale(1.2) rotate(5deg);
+            box-shadow: 0 20px 60px rgba(255, 107, 107, 0.6);
+        }
+
+        /* Big face that follows cursor */
+        .stalker-face {
+            position: fixed;
+            font-size: 8rem;
+            pointer-events: none;
+            z-index: 1;
+            opacity: 0.3;
+            transition: all 0.1s ease;
+        }
+
+        /* Strobe overlay */
+        .strobe {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: white;
+            pointer-events: none;
+            animation: strobe-flash 0.1s infinite;
+            opacity: 0;
+            z-index: 100;
+        }
+
+        .strobe.active {
+            opacity: 0.3;
+        }
+
+        @keyframes strobe-flash {
+
+            0%,
+            50% {
+                opacity: 0;
+            }
+
+            51%,
+            100% {
+                opacity: 0.3;
+            }
+        }
+
+        /* Corner explosions */
+        .corner-blast {
+            position: fixed;
+            width: 300px;
+            height: 300px;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(255, 255, 255, 0.8) 0%, transparent 70%);
+            animation: corner-explode 1s ease-out forwards;
+            pointer-events: none;
+        }
+
+        @keyframes corner-explode {
+            0% {
+                transform: scale(0);
+                opacity: 1;
+            }
+
+            100% {
+                transform: scale(3);
+                opacity: 0;
+            }
+        }
+
+        /* Flying Doğuş heads */
+        .flying-head {
+            position: fixed;
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            object-fit: cover;
+            animation: fly-around 4s linear infinite;
+            pointer-events: none;
+        }
+
+        @keyframes fly-around {
+            0% {
+                transform: translate(0, 0) rotate(0deg);
+            }
+
+            25% {
+                transform: translate(100vw, 30vh) rotate(360deg);
+            }
+
+            50% {
+                transform: translate(50vw, 100vh) rotate(720deg);
+            }
+
+            75% {
+                transform: translate(-20vw, 50vh) rotate(1080deg);
+            }
+
+            100% {
+                transform: translate(0, 0) rotate(1440deg);
+            }
+        }
+
+        /* Message explosion */
+        .message-explosion {
+            position: fixed;
+            font-size: 3rem;
+            font-weight: 800;
+            color: #ff0;
+            text-shadow: 3px 3px 0 #f00, -3px -3px 0 #0ff;
+            animation: message-pop 2s ease-out forwards;
+            pointer-events: none;
+            z-index: 200;
+        }
+
+        @keyframes message-pop {
+            0% {
+                transform: scale(0) rotate(-30deg);
+                opacity: 0;
+            }
+
+            20% {
+                transform: scale(1.5) rotate(10deg);
+                opacity: 1;
+            }
+
+            80% {
+                transform: scale(1.2) rotate(-5deg);
+                opacity: 1;
+            }
+
+            100% {
+                transform: scale(0) rotate(30deg);
+                opacity: 0;
+            }
+        }
+
+        /* Counter */
+        .prank-counter {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: rgba(0, 0, 0, 0.5);
+            color: #0f0;
+            font-family: monospace;
+            font-size: 1.2rem;
+            padding: 10px 20px;
+            border-radius: 10px;
+            z-index: 50;
+        }
+
+        /* FAKE INTRO SCREEN - HYPER PROFESSIONAL */
+        .intro-screen {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: #f8f9fa;
+            z-index: 9999;
+            overflow-y: auto;
+            clip-path: inset(0% 0% 0% 0%);
+            transition: clip-path 1.5s cubic-bezier(0.77, 0, 0.175, 1);
+        }
+
+        .intro-screen.revealing {
+            animation: glitch-shake 0.3s ease infinite;
+        }
+
+        .intro-screen.hidden {
+            clip-path: inset(50% 50% 50% 50%);
+            pointer-events: none;
+        }
+
+        @keyframes glitch-shake {
+
+            0%,
+            100% {
+                transform: translate(0, 0) skew(0deg);
+                filter: hue-rotate(0deg);
+            }
+
+            20% {
+                transform: translate(-3px, 2px) skew(0.5deg);
+                filter: hue-rotate(90deg);
+            }
+
+            40% {
+                transform: translate(3px, -2px) skew(-0.5deg);
+                filter: hue-rotate(180deg);
+            }
+
+            60% {
+                transform: translate(-2px, -3px) skew(0.3deg);
+                filter: hue-rotate(270deg);
+            }
+
+            80% {
+                transform: translate(2px, 3px) skew(-0.3deg);
+                filter: hue-rotate(360deg);
+            }
+        }
+
+        /* Glitch overlay effect */
+        .glitch-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: transparent;
+            z-index: 10000;
+            pointer-events: none;
+            display: none;
+        }
+
+        .glitch-overlay.active {
+            display: block;
+            animation: glitch-lines 0.1s linear infinite;
+        }
+
+        @keyframes glitch-lines {
+            0% {
+                background: repeating-linear-gradient(0deg,
+                        rgba(255, 0, 0, 0.1) 0px,
+                        rgba(255, 0, 0, 0.1) 2px,
+                        transparent 2px,
+                        transparent 4px);
+            }
+
+            50% {
+                background: repeating-linear-gradient(0deg,
+                        rgba(0, 255, 255, 0.1) 0px,
+                        rgba(0, 255, 255, 0.1) 3px,
+                        transparent 3px,
+                        transparent 6px);
+            }
+        }
+
+        .intro-nav {
+            background: white;
+            padding: 15px 50px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .intro-nav-brand {
+            font-weight: 800;
+            font-size: 1.5rem;
+            color: #e94560;
+        }
+
+        .intro-nav-links {
+            display: flex;
+            gap: 35px;
+        }
+
+        .intro-nav-link {
+            color: #333;
+            text-decoration: none;
+            font-size: 0.95rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: color 0.2s;
+        }
+
+        .intro-nav-link:hover {
+            color: #e94560;
+        }
+
+        .intro-nav-btn {
+            background: #e94560;
+            color: white;
+            border: none;
+            padding: 10px 25px;
+            border-radius: 6px;
+            font-weight: 600;
+            cursor: pointer;
+        }
+
+        .intro-hero {
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+            padding: 80px 50px;
+            text-align: center;
+            color: white;
+        }
+
+        .intro-hero h1 {
+            font-size: 3rem;
+            font-weight: 800;
+            margin-bottom: 20px;
+        }
+
+        .intro-hero p {
+            font-size: 1.3rem;
+            opacity: 0.9;
+            max-width: 600px;
+            margin: 0 auto 30px;
+        }
+
+        .intro-stats {
+            display: flex;
+            justify-content: center;
+            gap: 60px;
+            margin-top: 40px;
+        }
+
+        .intro-stat {
+            text-align: center;
+        }
+
+        .intro-stat-number {
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: #e94560;
+        }
+
+        .intro-stat-label {
+            font-size: 0.9rem;
+            opacity: 0.8;
+        }
+
+        .intro-section {
+            padding: 60px 50px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .intro-section-title {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: #1a1a2e;
+            margin-bottom: 30px;
+        }
+
+        .candidates-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 25px;
+        }
+
+        .candidate-card {
+            background: white;
+            border-radius: 12px;
+            padding: 25px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+            text-align: center;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .candidate-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.12);
+        }
+
+        .candidate-photo {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-bottom: 15px;
+            border: 3px solid #e94560;
+        }
+
+        .candidate-name {
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: #1a1a2e;
+            margin-bottom: 5px;
+        }
+
+        .candidate-role {
+            font-size: 0.9rem;
+            color: #666;
+            margin-bottom: 10px;
+        }
+
+        .candidate-location {
+            font-size: 0.85rem;
+            color: #e94560;
+        }
+
+        .candidate-badge {
+            display: inline-block;
+            background: #e8f5e9;
+            color: #2e7d32;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            margin-top: 10px;
+        }
+
+        .jobs-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+        }
+
+        .job-card {
+            background: white;
+            border-radius: 10px;
+            padding: 20px 25px;
+            box-shadow: 0 3px 12px rgba(0, 0, 0, 0.06);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-left: 4px solid #e94560;
+        }
+
+        .job-info h3 {
+            font-size: 1.1rem;
+            color: #1a1a2e;
+            margin-bottom: 5px;
+        }
+
+        .job-info p {
+            font-size: 0.85rem;
+            color: #666;
+        }
+
+        .job-salary {
+            font-size: 1rem;
+            font-weight: 700;
+            color: #2e7d32;
+        }
+
+        .intro-footer-bar {
+            background: #1a1a2e;
+            color: rgba(255, 255, 255, 0.6);
+            text-align: center;
+            padding: 25px;
+            font-size: 0.85rem;
+        }
+
+        /* Hide prank content initially */
+        .prank-content {
+            display: none;
+        }
+
+        .prank-content.visible {
+            display: block;
+        }
+
+        /* ========== MOBILE RESPONSIVE STYLES ========== */
+        @media (max-width: 768px) {
+
+            /* Intro Navigation */
+            .intro-nav {
+                padding: 12px 20px;
+                flex-wrap: wrap;
+                gap: 10px;
+            }
+
+            .intro-nav-brand {
+                font-size: 1.2rem;
+            }
+
+            .intro-nav-links {
+                display: none;
+                /* Hide nav links on mobile */
+            }
+
+            .intro-nav-btn {
+                padding: 8px 16px;
+                font-size: 0.85rem;
+            }
+
+            /* Intro Hero */
+            .intro-hero {
+                padding: 50px 20px;
+            }
+
+            .intro-hero h1 {
+                font-size: 1.8rem;
+                line-height: 1.3;
+            }
+
+            .intro-hero p {
+                font-size: 1rem;
+            }
+
+            .intro-stats {
+                flex-wrap: wrap;
+                gap: 25px;
+            }
+
+            .intro-stat-number {
+                font-size: 1.8rem;
+            }
+
+            /* Intro Sections */
+            .intro-section {
+                padding: 40px 20px;
+            }
+
+            .intro-section-title {
+                font-size: 1.4rem;
+            }
+
+            /* Candidates Grid - Stack on mobile */
+            .candidates-grid {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+
+            .candidate-card {
+                padding: 20px;
+            }
+
+            .candidate-photo {
+                width: 80px;
+                height: 80px;
+            }
+
+            /* Jobs Grid - Stack on mobile */
+            .jobs-grid {
+                grid-template-columns: 1fr;
+                gap: 15px;
+            }
+
+            .job-card {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 10px;
+            }
+
+            .intro-footer-bar {
+                padding: 20px 15px;
+                font-size: 0.75rem;
+            }
+
+            /* Prank Content */
+            .container {
+                padding: 25px;
+                margin: 10px;
+                border-radius: 20px;
+            }
+
+            .prank-image {
+                width: 150px;
+                height: 150px;
+            }
+
+            .title {
+                font-size: 1.5rem !important;
+            }
+
+            .subtitle {
+                font-size: 1rem !important;
+            }
+
+            .gotcha-btn {
+                padding: 12px 25px;
+                font-size: 0.9rem;
+                margin: 10px 5px !important;
+            }
+
+            .prank-counter {
+                top: 10px;
+                right: 10px;
+                font-size: 0.9rem;
+                padding: 8px 15px;
+            }
+
+            .stalker-face {
+                font-size: 4rem;
+            }
+
+            .floating-text {
+                font-size: 1rem;
+            }
+
+            .message-explosion {
+                font-size: 1.8rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .intro-hero h1 {
+                font-size: 1.5rem;
+            }
+
+            .intro-stats {
+                gap: 15px;
+            }
+
+            .intro-stat {
+                flex: 0 0 45%;
+            }
+
+            .intro-stat-number {
+                font-size: 1.5rem;
+            }
+
+            .intro-stat-label {
+                font-size: 0.75rem;
+            }
+
+            .prank-image {
+                width: 120px;
+                height: 120px;
+            }
+
+            .title {
+                font-size: 1.3rem !important;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Glitch overlay for transition effect -->
+    <div class="glitch-overlay" id="glitch-overlay"></div>
+
+    <!-- FAKE INTRO SCREEN - HYPER PROFESSIONAL -->
+    <div class="intro-screen" id="intro-screen">
+        <nav class="intro-nav">
+            <div class="intro-nav-brand">🇹🇷 TurkishGuru</div>
+            <div class="intro-nav-links">
+                <span class="intro-nav-link">Find Jobs</span>
+                <span class="intro-nav-link">For Employers</span>
+                <span class="intro-nav-link">Visa Services</span>
+                <span class="intro-nav-link">Success Stories</span>
+                <span class="intro-nav-link">About Us</span>
+            </div>
+            <button class="intro-nav-btn">Sign In</button>
+        </nav>
+
+        <div class="intro-hero">
+            <h1>Connect Turkish Talent with Global Opportunities</h1>
+            <p>The leading platform for Turkish professionals seeking international careers. Trusted by top employers
+                worldwide.</p>
+
+            <div class="intro-stats">
+                <div class="intro-stat">
+                    <div class="intro-stat-number">15,000+</div>
+                    <div class="intro-stat-label">Candidates Placed</div>
+                </div>
+                <div class="intro-stat">
+                    <div class="intro-stat-number">500+</div>
+                    <div class="intro-stat-label">Partner Companies</div>
+                </div>
+                <div class="intro-stat">
+                    <div class="intro-stat-number">32</div>
+                    <div class="intro-stat-label">Countries</div>
+                </div>
+                <div class="intro-stat">
+                    <div class="intro-stat-number">98%</div>
+                    <div class="intro-stat-label">Success Rate</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="intro-section">
+            <h2 class="intro-section-title">🌟 Featured Candidates</h2>
+            <div class="candidates-grid">
+                <div class="candidate-card">
+                    <img src="candidate1.png" alt="Candidate" class="candidate-photo">
+                    <div class="candidate-name">Ayşe Yılmaz</div>
+                    <div class="candidate-role">Senior Software Engineer</div>
+                    <div class="candidate-location">📍 Available for: Germany, Netherlands</div>
+                    <span class="candidate-badge">✓ Verified</span>
+                </div>
+                <div class="candidate-card">
+                    <img src="candidate2.png" alt="Candidate" class="candidate-photo">
+                    <div class="candidate-name">Mehmet Kaya</div>
+                    <div class="candidate-role">Full Stack Developer</div>
+                    <div class="candidate-location">📍 Available for: UK, Denmark</div>
+                    <span class="candidate-badge">✓ Verified</span>
+                </div>
+                <div class="candidate-card">
+                    <img src="candidate3.png" alt="Candidate" class="candidate-photo">
+                    <div class="candidate-name">Ahmet Demir</div>
+                    <div class="candidate-role">Product Manager</div>
+                    <div class="candidate-location">📍 Available for: USA, Canada</div>
+                    <span class="candidate-badge">✓ Verified</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="intro-section" style="background: white; max-width: 100%; padding: 60px 50px;">
+            <div style="max-width: 1200px; margin: 0 auto;">
+                <h2 class="intro-section-title">💼 Latest Job Opportunities</h2>
+                <div class="jobs-grid">
+                    <div class="job-card">
+                        <div class="job-info">
+                            <h3>Senior Backend Engineer</h3>
+                            <p>Spotify • Stockholm, Sweden</p>
+                        </div>
+                        <div class="job-salary">€85,000/yr</div>
+                    </div>
+                    <div class="job-card">
+                        <div class="job-info">
+                            <h3>Data Scientist</h3>
+                            <p>BMW Group • Munich, Germany</p>
+                        </div>
+                        <div class="job-salary">€92,000/yr</div>
+                    </div>
+                    <div class="job-card">
+                        <div class="job-info">
+                            <h3>DevOps Engineer</h3>
+                            <p>Booking.com • Amsterdam, Netherlands</p>
+                        </div>
+                        <div class="job-salary">€78,000/yr</div>
+                    </div>
+                    <div class="job-card">
+                        <div class="job-info">
+                            <h3>Frontend Developer</h3>
+                            <p>Klarna • Berlin, Germany</p>
+                        </div>
+                        <div class="job-salary">€72,000/yr</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="intro-footer-bar">
+            © 2024 TurkishGuru International Ltd. | Trusted by 500+ companies worldwide | Istanbul • Berlin • London •
+            Amsterdam
+        </div>
+    </div>
+
+
+    <!-- PRANK CONTENT (hidden initially) -->
+    <div class="prank-content" id="prank-content">
+        <div class="strobe" id="strobe"></div>
+        <div class="stalker-face" id="stalker">👀</div>
+        <div class="prank-counter">PRANK LEVEL: <span id="prank-level">1</span> 🔥</div>
+
+        <div class="container">
+            <img src="uploaded_media_1770330040193.jpg" alt="Gotcha!" class="prank-image" id="main-image"
+                onclick="imageClicked()">
+            <h1 class="title" id="title">Doğuş, you just got PUNKED! 🤣</h1>
+            <p class="subtitle" id="subtitle">Did you really think this was legit? 😏</p>
+            <button class="gotcha-btn" onclick="TOTALCHAOS()">🚀 UNLEASH TOTAL CHAOS 🚀</button>
+            <button class="gotcha-btn" style="margin-left: 10px" onclick="toggleDisco()">🕺 DISCO MODE 💃</button>
+            <p class="footer">Made with ❤️ and MAXIMUM mischief<br><br>Your brother in war and in peace,<br><em
+                    style="font-size: 1.2rem; font-weight: 600;">Jonas</em></p>
+        </div>
+
+        <audio id="chaos-sound" preload="auto">
+            <source src="https://www.myinstants.com/media/sounds/mlg-airhorn.mp3" type="audio/mpeg">
+        </audio>
+
+        <script>
+            let prankLevel = 1;
+            let chaosInterval;
+            let discoing = false;
+            const messages = [
+                "GOTCHA! 🤣",
+                "YOU FELL FOR IT!",
+                "PRANKED!!! 💥",
+                "NO ESCAPE! 🔒",
+                "HAHAHAHA! 😂",
+                "GET REKT! 💀",
+                "DOĞUŞSSS! 🎯",
+                "TOO EASY! 😎",
+                "EPIC FAIL! 🏆"
+            ];
+
+            const titleMessages = [
+                "Doğuş, you just got PUNKED! 🤣",
+                "THERE IS NO ESCAPE DOĞUŞ! 🔒",
+                "ACCEPT YOUR FATE! 💀",
+                "RESISTANCE IS FUTILE! 🤖",
+                "THE PRANK NEVER ENDS! ♾️",
+                "YOU'VE BEEN MEGA-PRANKED! 💥"
+            ];
+
+            // Create confetti
+            function createConfetti() {
+                const colors = ['#ff6b6b', '#feca57', '#48dbfb', '#ff9ff3', '#54a0ff', '#5f27cd', '#00d2d3', '#1dd1a1', '#ff0000', '#00ff00', '#0000ff', '#ffff00', '#ff00ff', '#00ffff'];
+
+                for (let i = 0; i < 100; i++) {
+                    const confetti = document.createElement('div');
+                    confetti.className = 'confetti';
+                    confetti.style.left = Math.random() * 100 + 'vw';
+                    confetti.style.background = colors[Math.floor(Math.random() * colors.length)];
+                    confetti.style.animationDelay = Math.random() * 3 + 's';
+                    confetti.style.animationDuration = (Math.random() * 2 + 1) + 's';
+                    confetti.style.borderRadius = Math.random() > 0.5 ? '50%' : '0';
+                    confetti.style.width = (Math.random() * 15 + 5) + 'px';
+                    confetti.style.height = confetti.style.width;
+                    document.body.appendChild(confetti);
+                }
+            }
+
+            // Create emoji rain
+            function createEmojiRain() {
+                const emojis = ['🎉', '😂', '🤣', '👊', '🤜', '💥', '😏', '🎊', '✨', '🔥', '🚀', '💀', '👻', '🤡', '🙈', '💣', '⚡', '🌈', '🦄', '👑'];
+
+                setInterval(() => {
+                    const emoji = document.createElement('div');
+                    emoji.className = 'emoji-rain';
+                    emoji.textContent = emojis[Math.floor(Math.random() * emojis.length)];
+                    emoji.style.left = Math.random() * 100 + 'vw';
+                    emoji.style.animationDuration = (Math.random() * 1.5 + 1.5) + 's';
+                    emoji.style.fontSize = (Math.random() * 2 + 1.5) + 'rem';
+                    document.body.appendChild(emoji);
+
+                    setTimeout(() => emoji.remove(), 4000);
+                }, 100);
+            }
+
+            // Launch rockets
+            function launchRocket() {
+                const rocket = document.createElement('div');
+                rocket.className = 'rocket';
+                rocket.textContent = '🚀';
+                rocket.style.animationDuration = (Math.random() * 1 + 0.5) + 's';
+                document.body.appendChild(rocket);
+                setTimeout(() => rocket.remove(), 2000);
+            }
+
+            // Fire laser
+            function fireLaser() {
+                const laser = document.createElement('div');
+                laser.className = 'laser';
+                laser.style.top = Math.random() * 100 + 'vh';
+                laser.style.background = `linear-gradient(90deg, transparent, ${['#ff0000', '#00ff00', '#0000ff', '#ff00ff', '#00ffff'][Math.floor(Math.random() * 5)]}, transparent)`;
+                document.body.appendChild(laser);
+                setTimeout(() => laser.remove(), 500);
+            }
+
+            // Spawn floating text
+            function spawnFloatingText() {
+                const text = document.createElement('div');
+                text.className = 'floating-text';
+                text.textContent = messages[Math.floor(Math.random() * messages.length)];
+                text.style.left = Math.random() * 80 + 10 + '%';
+                text.style.top = Math.random() * 80 + 10 + '%';
+                text.style.color = `hsl(${Math.random() * 360}, 100%, 70%)`;
+                document.body.appendChild(text);
+                setTimeout(() => text.remove(), 3000);
+            }
+
+            // Corner blasts
+            function cornerBlast() {
+                const positions = [
+                    { top: '-100px', left: '-100px' },
+                    { top: '-100px', right: '-100px' },
+                    { bottom: '-100px', left: '-100px' },
+                    { bottom: '-100px', right: '-100px' }
+                ];
+                const pos = positions[Math.floor(Math.random() * positions.length)];
+                const blast = document.createElement('div');
+                blast.className = 'corner-blast';
+                Object.assign(blast.style, pos);
+                document.body.appendChild(blast);
+                setTimeout(() => blast.remove(), 1000);
+            }
+
+            // Flying heads
+            function spawnFlyingHead() {
+                const head = document.createElement('img');
+                head.src = 'uploaded_media_1770330040193.jpg';
+                head.className = 'flying-head';
+                head.style.animationDuration = (Math.random() * 2 + 2) + 's';
+                head.style.left = Math.random() * 100 + 'vw';
+                head.style.top = Math.random() * 100 + 'vh';
+                document.body.appendChild(head);
+                setTimeout(() => head.remove(), 4000);
+            }
+
+            // Message explosion
+            function messageExplosion(msg) {
+                const explosion = document.createElement('div');
+                explosion.className = 'message-explosion';
+                explosion.textContent = msg;
+                explosion.style.left = Math.random() * 60 + 20 + '%';
+                explosion.style.top = Math.random() * 60 + 20 + '%';
+                document.body.appendChild(explosion);
+                setTimeout(() => explosion.remove(), 2000);
+            }
+
+            // Screen shake
+            function screenShake() {
+                document.body.classList.add('shake');
+                setTimeout(() => document.body.classList.remove('shake'), 500);
+            }
+
+            // Strobe effect
+            function strobeFlash(duration) {
+                const strobe = document.getElementById('strobe');
+                strobe.classList.add('active');
+                setTimeout(() => strobe.classList.remove('active'), duration);
+            }
+
+            // Stalker face follows cursor
+            document.addEventListener('mousemove', (e) => {
+                const stalker = document.getElementById('stalker');
+                stalker.style.left = (e.clientX - 60) + 'px';
+                stalker.style.top = (e.clientY - 60) + 'px';
+            });
+
+            // Image clicked - more chaos
+            function imageClicked() {
+                screenShake();
+                for (let i = 0; i < 5; i++) {
+                    setTimeout(() => spawnFlyingHead(), i * 100);
+                }
+                prankLevel++;
+                document.getElementById('prank-level').textContent = prankLevel;
+                messageExplosion("CLICK = MORE CHAOS! 🤯");
+            }
+
+            // Toggle disco mode
+            function toggleDisco() {
+                discoing = !discoing;
+                document.body.classList.toggle('disco-mode', discoing);
+                if (discoing) {
+                    strobeFlash(3000);
+                }
+            }
+
+            // TOTAL CHAOS
+            function TOTALCHAOS() {
+                prankLevel += 10;
+                document.getElementById('prank-level').textContent = prankLevel;
+
+                screenShake();
+                strobeFlash(500);
+
+                // Change title
+                document.getElementById('title').textContent = titleMessages[Math.floor(Math.random() * titleMessages.length)];
+
+                // Spawn everything
+                for (let i = 0; i < 20; i++) {
+                    setTimeout(() => {
+                        launchRocket();
+                        fireLaser();
+                        spawnFloatingText();
+                        cornerBlast();
+                        if (i % 3 === 0) spawnFlyingHead();
+                    }, i * 50);
+                }
+
+                // Big message
+                messageExplosion("🔥 TOTAL CHAOS 🔥");
+
+                // Increase chaos permanently  
+                if (!chaosInterval) {
+                    chaosInterval = setInterval(() => {
+                        launchRocket();
+                        fireLaser();
+                        if (Math.random() > 0.7) spawnFloatingText();
+                        if (Math.random() > 0.9) spawnFlyingHead();
+                        if (Math.random() > 0.95) cornerBlast();
+                    }, 200);
+                }
+            }
+
+            // Random title changes
+            setInterval(() => {
+                if (Math.random() > 0.7) {
+                    document.getElementById('title').textContent = titleMessages[Math.floor(Math.random() * titleMessages.length)];
+                }
+            }, 3000);
+
+            // Random screen shakes
+            setInterval(() => {
+                if (Math.random() > 0.8) screenShake();
+            }, 5000);
+
+            // === STAGE 1: START GLITCHING AT 3 SECONDS ===
+            setTimeout(() => {
+                const introScreen = document.getElementById('intro-screen');
+                const glitchOverlay = document.getElementById('glitch-overlay');
+
+                // Start glitch effects
+                if (introScreen) {
+                    introScreen.classList.add('revealing');
+                }
+                if (glitchOverlay) {
+                    glitchOverlay.classList.add('active');
+                }
+            }, 3000);
+
+            // === STAGE 2: CARVE THE HOLE AT 4 SECONDS ===
+            setTimeout(() => {
+                const introScreen = document.getElementById('intro-screen');
+                const glitchOverlay = document.getElementById('glitch-overlay');
+
+                // Show prank content first (it will be visible through the hole)
+                const prankContent = document.getElementById('prank-content');
+                if (prankContent) {
+                    prankContent.classList.add('visible');
+                }
+
+                // Start the chaos immediately!
+                createConfetti();
+                createEmojiRain();
+
+                // Carve the hole - the intro collapses into a point
+                if (introScreen) {
+                    introScreen.classList.add('hidden');
+                }
+
+                // Remove glitch overlay after transition
+                setTimeout(() => {
+                    if (glitchOverlay) {
+                        glitchOverlay.classList.remove('active');
+                    }
+                }, 1500);
+
+                // Change page title and favicon
+                document.title = "🎉 SURPRISE! YOU GOT PRANKED! 🎉";
+                document.getElementById('favicon').href = "data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🤡</text></svg>";
+
+                // Start rest of chaos
+                setInterval(launchRocket, 1000);
+                setInterval(fireLaser, 800);
+                setInterval(spawnFloatingText, 2000);
+                setInterval(spawnFlyingHead, 5000);
+
+                console.log("%c🎉 DOĞUŞ GOT MEGA-PRANKED! 🎉", "font-size: 30px; color: red; text-shadow: 2px 2px blue;");
+                console.log("%cThere is no escape from the chaos!", "font-size: 20px; color: purple;");
+
+                // Make it hard to leave! 😈
+
+                // 1. Beforeunload dialog (works when user interacts with page first)
+                window.addEventListener('beforeunload', function (e) {
+                    e.preventDefault();
+                    e.returnValue = '';
+                    return '';
+                });
+
+                // 2. When they try to switch tabs or minimize, show alert
+                document.addEventListener('visibilitychange', function () {
+                    if (document.hidden) {
+                        // They'll see this when they come back
+                        setTimeout(() => {
+                            alert("🤡 You thought you could escape? NOPE! 🤡");
+                        }, 100);
+                    }
+                });
+
+                // 3. Prevent back button
+                history.pushState(null, null, location.href);
+                window.addEventListener('popstate', function () {
+                    history.pushState(null, null, location.href);
+                    alert("⛔ There is no going back, Doğuş! ⛔");
+                });
+
+                // 4. Random popup trolling every 30 seconds
+                setInterval(() => {
+                    const trollMessages = [
+                        "Still here? �",
+                        "You can't escape! 🔒",
+                        "Doğuş... accept your fate �",
+                        "This is your life now 🎉",
+                        "Jonas says hi! �"
+                    ];
+                    // Only show occasionally and randomly
+                    if (Math.random() > 0.7) {
+                        alert(trollMessages[Math.floor(Math.random() * trollMessages.length)]);
+                    }
+                }, 30000);
+
+            }, 4000);
+        </script>
+    </div> <!-- Close prank-content -->
+</body>
+
+</html>
