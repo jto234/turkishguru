@@ -681,29 +681,10 @@
         }
 
         .intro-hero {
-            background: url('hero-bg.svg') center/cover no-repeat, linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
-            padding: 100px 50px 80px;
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+            padding: 80px 50px;
             text-align: center;
             color: white;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .intro-hero::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: rgba(0, 0, 0, 0.2);
-            /* Slight darken overlay to ensure text contrast */
-            pointer-events: none;
-        }
-
-        .intro-hero>* {
-            position: relative;
-            z-index: 1;
         }
 
         .intro-hero h1 {
@@ -717,37 +698,6 @@
             opacity: 0.9;
             max-width: 600px;
             margin: 0 auto 30px;
-        }
-
-        .cta-button {
-            display: inline-block;
-            background: linear-gradient(135deg, #e94560 0%, #ff6b6b 100%);
-            color: white;
-            padding: 18px 45px;
-            border-radius: 50px;
-            font-size: 1.2rem;
-            font-weight: 600;
-            text-decoration: none;
-            border: none;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            box-shadow: 0 8px 25px rgba(233, 69, 96, 0.4);
-            margin-bottom: 30px;
-        }
-
-        .cta-button:hover {
-            transform: translateY(-3px) scale(1.02);
-            box-shadow: 0 12px 35px rgba(233, 69, 96, 0.5);
-        }
-
-        .cta-button::after {
-            content: ' →';
-            transition: transform 0.3s ease;
-            display: inline-block;
-        }
-
-        .cta-button:hover::after {
-            transform: translateX(5px);
         }
 
         .intro-stats {
@@ -1070,83 +1020,105 @@
         <nav class="intro-nav">
             <div class="intro-nav-brand">🇹🇷 TurkishGuru</div>
             <div class="intro-nav-links">
-                <span class="intro-nav-link">Find Jobs</span>
-                <span class="intro-nav-link">For Employers</span>
-                <span class="intro-nav-link">Visa Services</span>
-                <span class="intro-nav-link">Success Stories</span>
-                <span class="intro-nav-link">About Us</span>
+                <span class="intro-nav-link" data-en="Find Jobs" data-tr="İş Bul">İş Bul</span>
+                <span class="intro-nav-link" data-en="For Employers" data-tr="İşverenler İçin">İşverenler İçin</span>
+                <span class="intro-nav-link" data-en="Visa Services" data-tr="Vize Hizmetleri">Vize Hizmetleri</span>
+                <span class="intro-nav-link" data-en="Success Stories" data-tr="Başarı Hikayeleri">Başarı
+                    Hikayeleri</span>
+                <span class="intro-nav-link" data-en="About Us" data-tr="Hakkımızda">Hakkımızda</span>
             </div>
-            <button class="intro-nav-btn">Sign In</button>
+            <div style="display: flex; gap: 15px; align-items: center;">
+                <button class="intro-nav-btn" id="lang-toggle"
+                    style="background: transparent; border: 1px solid #e94560; color: #e94560; padding: 8px 15px;">English</button>
+                <button class="intro-nav-btn" data-en="Sign In" data-tr="Giriş Yap">Giriş Yap</button>
+            </div>
         </nav>
 
         <div class="intro-hero">
-            <h1>Connect Turkish Talent with Global Opportunities</h1>
-            <p>The leading platform for Turkish professionals seeking international careers. Trusted by top employers
-                worldwide.</p>
-            <button class="cta-button" id="cta-scroll-btn">View Top Candidates</button>
+            <h1 data-en="Connect Turkish Talent with Global Opportunities"
+                data-tr="Türk Yeteneklerini Küresel Fırsatlarla Buluşturuyoruz">Türk Yeteneklerini Küresel Fırsatlarla
+                Buluşturuyoruz</h1>
+            <p data-en="The leading platform for Turkish professionals seeking international careers. Trusted by top employers worldwide."
+                data-tr="Uluslararası kariyer arayan Türk profesyoneller için lider platform. Dünya çapındaki en iyi işverenler tarafından güvenilmektedir.">
+                Uluslararası kariyer arayan Türk profesyoneller için lider platform. Dünya çapındaki en iyi işverenler
+                tarafından güvenilmektedir.</p>
+            <button class="cta-button" id="cta-scroll-btn" data-en="View Top Candidates"
+                data-tr="En İyi Adayları Gör">En İyi Adayları Gör</button>
 
             <div class="intro-stats">
                 <div class="intro-stat">
                     <div class="intro-stat-number">15,000+</div>
-                    <div class="intro-stat-label">Candidates Placed</div>
+                    <div class="intro-stat-label" data-en="Candidates Placed" data-tr="Aday Yerleştirildi">Aday
+                        Yerleştirildi</div>
                 </div>
                 <div class="intro-stat">
                     <div class="intro-stat-number">500+</div>
-                    <div class="intro-stat-label">Partner Companies</div>
+                    <div class="intro-stat-label" data-en="Partner Companies" data-tr="Partner Şirket">Partner Şirket
+                    </div>
                 </div>
                 <div class="intro-stat">
                     <div class="intro-stat-number">32</div>
-                    <div class="intro-stat-label">Countries</div>
+                    <div class="intro-stat-label" data-en="Countries" data-tr="Ülke">Ülke</div>
                 </div>
                 <div class="intro-stat">
                     <div class="intro-stat-number">98%</div>
-                    <div class="intro-stat-label">Success Rate</div>
+                    <div class="intro-stat-label" data-en="Success Rate" data-tr="Başarı Oranı">Başarı Oranı</div>
                 </div>
             </div>
         </div>
 
         <div class="intro-section">
-            <h2 class="intro-section-title">🌟 Featured Candidates</h2>
+            <h2 class="intro-section-title" data-en="🌟 Featured Candidates" data-tr="🌟 Öne Çıkan Adaylar">🌟 Öne Çıkan
+                Adaylar</h2>
             <div class="candidates-grid">
                 <div class="candidate-card">
                     <img src="candidate1.jpg" alt="Candidate" class="candidate-photo">
                     <div class="candidate-name">Ayşe Yılmaz</div>
-                    <div class="candidate-role">Senior Software Engineer</div>
-                    <div class="candidate-location">📍 Available for: Germany, Netherlands</div>
-                    <span class="candidate-badge">✓ Verified</span>
+                    <div class="candidate-role" data-en="Senior Software Engineer" data-tr="Kıdemli Yazılım Mühendisi">
+                        Kıdemli Yazılım Mühendisi</div>
+                    <div class="candidate-location" data-en="📍 Available for: Germany, Netherlands"
+                        data-tr="📍 Uygunluk: Almanya, Hollanda">📍 Uygunluk: Almanya, Hollanda</div>
+                    <span class="candidate-badge" data-en="✓ Verified" data-tr="✓ Doğrulanmış">✓ Doğrulanmış</span>
                 </div>
                 <div class="candidate-card" id="mehmet-card">
                     <img src="thumb.jpg" alt="Candidate" class="candidate-photo" id="mehmet-photo">
                     <div class="candidate-name">Mehmet Kaya</div>
-                    <div class="candidate-role">Full Stack Developer</div>
-                    <div class="candidate-location">📍 Available for: UK, Denmark</div>
-                    <span class="candidate-badge">✓ Verified</span>
+                    <div class="candidate-role" data-en="Full Stack Developer" data-tr="Full Stack Geliştirici">Full
+                        Stack Geliştirici</div>
+                    <div class="candidate-location" data-en="📍 Available for: UK, Denmark"
+                        data-tr="📍 Uygunluk: İngiltere, Danimarka">📍 Uygunluk: İngiltere, Danimarka</div>
+                    <span class="candidate-badge" data-en="✓ Verified" data-tr="✓ Doğrulanmış">✓ Doğrulanmış</span>
                 </div>
                 <div class="candidate-card">
                     <img src="candidate3.jpg" alt="Candidate" class="candidate-photo">
                     <div class="candidate-name">Ahmet Demir</div>
-                    <div class="candidate-role">Product Manager</div>
-                    <div class="candidate-location">📍 Available for: USA, Canada</div>
-                    <span class="candidate-badge">✓ Verified</span>
+                    <div class="candidate-role" data-en="Product Manager" data-tr="Ürün Müdürü">Ürün Müdürü</div>
+                    <div class="candidate-location" data-en="📍 Available for: USA, Canada"
+                        data-tr="📍 Uygunluk: ABD, Kanada">📍 Uygunluk: ABD, Kanada</div>
+                    <span class="candidate-badge" data-en="✓ Verified" data-tr="✓ Doğrulanmış">✓ Doğrulanmış</span>
                 </div>
             </div>
         </div>
 
         <div class="intro-section" style="background: white; max-width: 100%; padding: 60px 50px;">
             <div style="max-width: 1200px; margin: 0 auto;">
-                <h2 class="intro-section-title">💼 Latest Job Opportunities</h2>
+                <h2 class="intro-section-title" data-en="💼 Latest Job Opportunities" data-tr="💼 Son İş Fırsatları">💼
+                    Son İş Fırsatları</h2>
                 <div class="jobs-grid">
                     <div class="job-card">
                         <div class="job-info">
-                            <h3>Senior Backend Engineer</h3>
-                            <p>Spotify • Stockholm, Sweden</p>
+                            <h3 data-en="Senior Backend Engineer" data-tr="Kıdemli Backend Mühendisi">Kıdemli Backend
+                                Mühendisi</h3>
+                            <p data-en="Spotify • Stockholm, Sweden" data-tr="Spotify • Stokholm, İsveç">Spotify •
+                                Stokholm, İsveç</p>
                         </div>
-                        <div class="job-salary">€85,000/yr</div>
+                        <div class="job-salary" data-en="€85,000/yr" data-tr="€85,000/yıl">€85,000/yıl</div>
                     </div>
                     <div class="job-card">
                         <div class="job-info">
-                            <h3>Data Scientist</h3>
-                            <p>BMW Group • Munich, Germany</p>
+                            <h3 data-en="Data Scientist" data-tr="Veri Bilimcisi">Veri Bilimcisi</h3>
+                            <p data-en="BMW Group • Munich, Germany" data-tr="BMW Group • Münih, Almanya">BMW Group •
+                                Münih, Almanya</p>
                         </div>
                         <div class="job-salary">€92,000/yr</div>
                     </div>
@@ -1416,6 +1388,31 @@
                 if (Math.random() > 0.8) screenShake();
             }, 5000);
 
+            // Language Switching Logic
+            let currentLang = 'tr'; // Default to Turkish
+            const langToggle = document.getElementById('lang-toggle');
+
+            function updateLanguage() {
+                const elements = document.querySelectorAll('[data-en][data-tr]');
+                elements.forEach(el => {
+                    el.textContent = el.getAttribute(`data-${currentLang}`);
+                });
+                if (langToggle) {
+                    langToggle.textContent = currentLang === 'tr' ? 'English' : 'Türkçe';
+                }
+            }
+
+            if (langToggle) {
+                langToggle.addEventListener('click', () => {
+                    currentLang = currentLang === 'tr' ? 'en' : 'tr';
+                    updateLanguage();
+                });
+            }
+
+            // Initialize Language (ensure Turkish is default)
+            updateLanguage();
+
+
             // === THUMB REVEAL TRANSITION ===
             let prankTriggered = false;
             let visibilityTimer = null;
@@ -1432,8 +1429,6 @@
 
                 // Get thumb position
                 const rect = thumb.getBoundingClientRect();
-                const centerX = window.innerWidth / 2;
-                const centerY = window.innerHeight / 2;
 
                 // Clone thumb for animation
                 const clone = thumb.cloneNode(true);
@@ -1446,9 +1441,9 @@
                     height: ${rect.height}px;
                     z-index: 10001;
                     border-radius: 50%;
-                    transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
-                    pointer-events: none;
+                    transition: all 1s cubic-bezier(0.68, -0.55, 0.265, 1.55);
                     object-fit: cover;
+                    pointer-events: none;
                 `;
                 document.body.appendChild(clone);
 
@@ -1456,29 +1451,36 @@
                 thumb.style.visibility = 'hidden';
 
                 // PHASE 1: Zoom into thumb - first center it and grow to fill screen
+                // Added delay to prevent jumpiness and ensure smooth transition start
                 requestAnimationFrame(() => {
-                    clone.style.left = '50%';
-                    clone.style.top = '50%';
-                    clone.style.transform = 'translate(-50%, -50%) scale(1)';
-                    clone.style.width = '200px';
-                    clone.style.height = '200px';
-                    clone.style.boxShadow = '0 0 100px rgba(233, 69, 96, 0.8)';
-                    clone.style.border = '8px solid white';
+                    // Force a reflow to ensure start position is registered
+                    clone.getBoundingClientRect();
+
+                    setTimeout(() => {
+                        clone.style.transition = 'all 0.8s cubic-bezier(0.4, 0, 0.2, 1)';
+                        clone.style.left = '50%';
+                        clone.style.top = '50%';
+                        clone.style.transform = 'translate(-50%, -50%) scale(1)';
+                        clone.style.width = '300px';
+                        clone.style.height = '300px';
+                        clone.style.boxShadow = '0 0 100px rgba(233, 69, 96, 0.8)';
+                        clone.style.border = '8px solid white';
+                    }, 50); // slight delay to allow DOM render
                 });
 
-                // PHASE 2: Zoom in massively (fills screen)
+                // PHASE 2: Zoom in massively (fills screen) - Delayed by 300ms as requested
                 setTimeout(() => {
-                    clone.style.transition = 'all 0.5s cubic-bezier(0.4, 0, 0.2, 1)';
-                    clone.style.transform = 'translate(-50%, -50%) scale(8)';
-                    clone.style.opacity = '0.9';
+                    clone.style.transition = 'all 0.8s cubic-bezier(0.4, 0, 0.2, 1)';
+                    clone.style.transform = 'translate(-50%, -50%) scale(15)'; // Increased scale for fuller coverage
+                    clone.style.opacity = '1';
 
                     // Fade out intro screen during zoom
                     if (introScreen) {
-                        introScreen.style.transition = 'opacity 0.5s ease';
+                        introScreen.style.transition = 'opacity 0.6s ease';
                         introScreen.style.opacity = '0';
                         introScreen.style.pointerEvents = 'none';
                     }
-                }, 600);
+                }, 900); // 50ms + 800ms + 300ms delay ~ rounded/adjusted
 
                 // PHASE 3: Switch to prank page and shrink clone to final position
                 setTimeout(() => {
@@ -1494,9 +1496,9 @@
                     clone.style.height = '350px';
                     clone.style.opacity = '1';
                     clone.style.boxShadow = '0 15px 35px rgba(0,0,0,0.3), 0 0 60px rgba(255,255,255,0.5)';
-                }, 1100);
+                }, 1600);
 
-                // PHASE 4: Remove clone and start chaos
+                // Remove clone and start chaos after animation
                 setTimeout(() => {
                     clone.remove();
                     createConfetti();
@@ -1515,7 +1517,7 @@
                     history.pushState(null, null, location.href);
                     window.addEventListener('popstate', () => { history.pushState(null, null, location.href); alert("⛔ There is no going back, Doğuş! ⛔"); });
                     setInterval(() => { if (Math.random() > 0.7) alert(["Still here? 😈", "You can't escape! 🔒"][Math.floor(Math.random() * 2)]); }, 30000);
-                }, 1900);
+                }, 2500);
 
                 console.log("%c🎉 DOĞUŞ GOT MEGA-PRANKED! 🎉", "font-size: 30px; color: red;");
             }
@@ -1546,26 +1548,6 @@
                     setTimeout(triggerPrank, 800);
                 }
             }, 8000);
-
-            // CTA Button: Scroll to Mehmet's card
-            const ctaBtn = document.getElementById('cta-scroll-btn');
-            if (ctaBtn) {
-                ctaBtn.addEventListener('click', (e) => {
-                    e.preventDefault();
-                    const mehmetCard = document.getElementById('mehmet-card');
-                    if (mehmetCard) {
-                        mehmetCard.scrollIntoView({ behavior: 'smooth', block: 'center' });
-                    }
-                });
-            }
-
-            // Any link click on intro page triggers prank
-            document.querySelectorAll('.intro-screen a, .intro-screen button:not(#cta-scroll-btn), .intro-nav-btn').forEach(el => {
-                el.addEventListener('click', (e) => {
-                    e.preventDefault();
-                    triggerPrank();
-                });
-            });
 
 
         </script>
