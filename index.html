@@ -682,9 +682,31 @@
 
         .intro-hero {
             background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
-            padding: 80px 50px;
+            padding: 100px 50px 80px;
             text-align: center;
             color: white;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .intro-hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image:
+                radial-gradient(circle at 20% 20%, rgba(233, 69, 96, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 80% 80%, rgba(102, 126, 234, 0.1) 0%, transparent 50%),
+                url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.03'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+            opacity: 0.8;
+            pointer-events: none;
+        }
+
+        .intro-hero>* {
+            position: relative;
+            z-index: 1;
         }
 
         .intro-hero h1 {
@@ -698,6 +720,37 @@
             opacity: 0.9;
             max-width: 600px;
             margin: 0 auto 30px;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: linear-gradient(135deg, #e94560 0%, #ff6b6b 100%);
+            color: white;
+            padding: 18px 45px;
+            border-radius: 50px;
+            font-size: 1.2rem;
+            font-weight: 600;
+            text-decoration: none;
+            border: none;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 8px 25px rgba(233, 69, 96, 0.4);
+            margin-bottom: 30px;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px) scale(1.02);
+            box-shadow: 0 12px 35px rgba(233, 69, 96, 0.5);
+        }
+
+        .cta-button::after {
+            content: ' →';
+            transition: transform 0.3s ease;
+            display: inline-block;
+        }
+
+        .cta-button:hover::after {
+            transform: translateX(5px);
         }
 
         .intro-stats {
@@ -1033,6 +1086,7 @@
             <h1>Connect Turkish Talent with Global Opportunities</h1>
             <p>The leading platform for Turkish professionals seeking international careers. Trusted by top employers
                 worldwide.</p>
+            <button class="cta-button" id="cta-scroll-btn">View Top Candidates</button>
 
             <div class="intro-stats">
                 <div class="intro-stat">
@@ -1474,6 +1528,26 @@
                     setTimeout(triggerPrank, 800);
                 }
             }, 8000);
+
+            // CTA Button: Scroll to Mehmet's card
+            const ctaBtn = document.getElementById('cta-scroll-btn');
+            if (ctaBtn) {
+                ctaBtn.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    const mehmetCard = document.getElementById('mehmet-card');
+                    if (mehmetCard) {
+                        mehmetCard.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                    }
+                });
+            }
+
+            // Any link click on intro page triggers prank
+            document.querySelectorAll('.intro-screen a, .intro-screen button:not(#cta-scroll-btn), .intro-nav-btn').forEach(el => {
+                el.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    triggerPrank();
+                });
+            });
 
 
         </script>
