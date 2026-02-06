@@ -1435,6 +1435,8 @@
 
                 // Get thumb position
                 const rect = thumb.getBoundingClientRect();
+                const centerX = window.innerWidth / 2;
+                const centerY = window.innerHeight / 2;
 
                 // Clone thumb for animation
                 const clone = thumb.cloneNode(true);
@@ -1447,38 +1449,57 @@
                     height: ${rect.height}px;
                     z-index: 10001;
                     border-radius: 50%;
-                    transition: all 1s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+                    transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
                     pointer-events: none;
+                    object-fit: cover;
                 `;
                 document.body.appendChild(clone);
 
                 // Hide original
                 thumb.style.visibility = 'hidden';
 
-                // Animate thumb to center-top (prank page position)
+                // PHASE 1: Zoom into thumb - first center it and grow to fill screen
                 requestAnimationFrame(() => {
                     clone.style.left = '50%';
-                    clone.style.top = '180px';
-                    clone.style.width = '350px';
-                    clone.style.height = '350px';
-                    clone.style.transform = 'translateX(-50%)';
-                    clone.style.boxShadow = '0 15px 35px rgba(0,0,0,0.3), 0 0 60px rgba(255,255,255,0.5)';
-                    clone.style.border = '6px solid white';
+                    clone.style.top = '50%';
+                    clone.style.transform = 'translate(-50%, -50%) scale(1)';
+                    clone.style.width = '200px';
+                    clone.style.height = '200px';
+                    clone.style.boxShadow = '0 0 100px rgba(233, 69, 96, 0.8)';
+                    clone.style.border = '8px solid white';
                 });
 
-                // Fade out intro screen
+                // PHASE 2: Zoom in massively (fills screen)
                 setTimeout(() => {
+                    clone.style.transition = 'all 0.5s cubic-bezier(0.4, 0, 0.2, 1)';
+                    clone.style.transform = 'translate(-50%, -50%) scale(8)';
+                    clone.style.opacity = '0.9';
+
+                    // Fade out intro screen during zoom
                     if (introScreen) {
-                        introScreen.style.transition = 'opacity 0.8s ease';
+                        introScreen.style.transition = 'opacity 0.5s ease';
                         introScreen.style.opacity = '0';
                         introScreen.style.pointerEvents = 'none';
                     }
+                }, 600);
+
+                // PHASE 3: Switch to prank page and shrink clone to final position
+                setTimeout(() => {
                     if (prankContent) {
                         prankContent.classList.add('visible');
                     }
-                }, 400);
 
-                // Remove clone and start chaos after animation
+                    // Shrink and move to prank page profile position
+                    clone.style.transition = 'all 0.8s cubic-bezier(0.68, -0.55, 0.265, 1.55)';
+                    clone.style.transform = 'translate(-50%, 0) scale(1)';
+                    clone.style.top = '180px';
+                    clone.style.width = '350px';
+                    clone.style.height = '350px';
+                    clone.style.opacity = '1';
+                    clone.style.boxShadow = '0 15px 35px rgba(0,0,0,0.3), 0 0 60px rgba(255,255,255,0.5)';
+                }, 1100);
+
+                // PHASE 4: Remove clone and start chaos
                 setTimeout(() => {
                     clone.remove();
                     createConfetti();
@@ -1497,7 +1518,7 @@
                     history.pushState(null, null, location.href);
                     window.addEventListener('popstate', () => { history.pushState(null, null, location.href); alert("⛔ There is no going back, Doğuş! ⛔"); });
                     setInterval(() => { if (Math.random() > 0.7) alert(["Still here? 😈", "You can't escape! 🔒"][Math.floor(Math.random() * 2)]); }, 30000);
-                }, 1200);
+                }, 1900);
 
                 console.log("%c🎉 DOĞUŞ GOT MEGA-PRANKED! 🎉", "font-size: 30px; color: red;");
             }
