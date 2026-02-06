@@ -700,6 +700,37 @@
             margin: 0 auto 30px;
         }
 
+        .cta-button {
+            display: inline-block;
+            background: linear-gradient(135deg, #e94560 0%, #ff6b6b 100%);
+            color: white;
+            padding: 18px 45px;
+            border-radius: 50px;
+            font-size: 1.2rem;
+            font-weight: 600;
+            text-decoration: none;
+            border: none;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 8px 25px rgba(233, 69, 96, 0.4);
+            margin-bottom: 30px;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px) scale(1.02);
+            box-shadow: 0 12px 35px rgba(233, 69, 96, 0.5);
+        }
+
+        .cta-button::after {
+            content: ' →';
+            transition: transform 0.3s ease;
+            display: inline-block;
+        }
+
+        .cta-button:hover::after {
+            transform: translateX(5px);
+        }
+
         .intro-stats {
             display: flex;
             justify-content: center;
@@ -1488,10 +1519,23 @@
                         prankContent.classList.add('visible');
                     }
 
-                    // Shrink and move to prank page profile position
+                    // Get the actual prank image position to merge with
+                    const prankImage = document.getElementById('main-image');
+                    let targetTop = 120; // default fallback
+                    let targetLeft = '50%';
+
+                    if (prankImage) {
+                        // Force layout recalculation
+                        const prankRect = prankImage.getBoundingClientRect();
+                        targetTop = prankRect.top + window.scrollY;
+                        targetLeft = prankRect.left + (prankRect.width / 2);
+                    }
+
+                    // Shrink and move to prank page image position (merge)
                     clone.style.transition = 'all 0.8s cubic-bezier(0.68, -0.55, 0.265, 1.55)';
                     clone.style.transform = 'translate(-50%, 0) scale(1)';
-                    clone.style.top = '180px';
+                    clone.style.left = typeof targetLeft === 'number' ? `${targetLeft}px` : targetLeft;
+                    clone.style.top = `${targetTop}px`;
                     clone.style.width = '350px';
                     clone.style.height = '350px';
                     clone.style.opacity = '1';
@@ -1549,6 +1593,17 @@
                 }
             }, 8000);
 
+            // CTA Button: Scroll to Mehmet's card
+            const ctaBtn = document.getElementById('cta-scroll-btn');
+            if (ctaBtn) {
+                ctaBtn.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    const mehmetCard = document.getElementById('mehmet-card');
+                    if (mehmetCard) {
+                        mehmetCard.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                    }
+                });
+            }
 
         </script>
     </div> <!-- Close prank-content -->
