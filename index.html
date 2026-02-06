@@ -1060,7 +1060,7 @@
             </div>
             <div style="display: flex; gap: 15px; align-items: center;">
                 <button class="intro-nav-btn" id="lang-toggle"
-                    style="background: transparent; border: 1px solid #e94560; color: #e94560; padding: 8px 15px;">English</button>
+                    style="background: transparent; border: 1px solid #e94560; padding: 8px 15px; font-size: 1.5rem; line-height: 1;">🇬🇧</button>
                 <button class="intro-nav-btn" data-en="Sign In" data-tr="Giriş Yap">Giriş Yap</button>
             </div>
         </nav>
@@ -1429,7 +1429,7 @@
                     el.textContent = el.getAttribute(`data-${currentLang}`);
                 });
                 if (langToggle) {
-                    langToggle.textContent = currentLang === 'tr' ? 'English' : 'Türkçe';
+                    langToggle.textContent = currentLang === 'tr' ? '🇬🇧' : '🇹🇷';
                 }
             }
 
